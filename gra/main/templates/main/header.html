@@ -1,0 +1,138 @@
+<head>
+    {% load static from staticfiles %}
+    <!-- Prism CSS -->
+    <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+   
+
+<!-- slider css style -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+</style>
+
+
+
+</head>
+
+<body>
+  
+    <nav>
+      <div class="nav-wrapper  "
+      <a href="/" class="brand-logo  ">G.R.A logo</a>
+      
+
+      <!-- sidebar menu -->
+      <a href="#" class="sidenav-trigger" data-target="mobile-links">
+        <i class="material-icons">menu</i>
+      </a>
+      <!-- navbar in desktop -->
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% include 'main/includes/navbar.html' %}
+      </ul>
+    </div>
+  </nav>
+
+<!-- side bar activated in mobile form -->
+  <ul class="sidenav" id="mobile-links">
+        
+        <li><a href="/">Home</a></li>
+        <li><a href="/forms">Forms</a></li>
+        <li><a href="{% url 'others:legals' %}">Legal Resources</a></li>
+        <li><a href="{% url 'others:publications' %}">Publications</a></li>
+        <li><a href="{% url 'others:offices' %}">Office Locations</a></li>
+        <li><a href="{% url 'others:contacts' %}">Contact Us</a></li>
+  </ul>
+
+  {% include 'main/includes/messages.html' %}
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+
+
+<!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
+
+   <!-- Compiled and minified JavaScript for Materialize CSS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
+<script src="{% static "tinymce/js/prism.js" %}"></script>
+<script>M.AutoInit();</script>
+
+<!-- slider script -->
+
+<script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}    
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex[no]-1].style.display = "block";  
+}
+</script>
